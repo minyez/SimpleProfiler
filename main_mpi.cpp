@@ -24,10 +24,12 @@ int main (int argc, char *argv[])
     profiler.stop("hello");
     profiler.start("world");
     profiler.stop("world");
+    // display() will save the profiling to per-process output
     profiler.display();
 
     os.close();
 
+    // write profiling of master process to stdout
     if (myid == 0)
     {
         auto s = profiler.get_profile_string();
